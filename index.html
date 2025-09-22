@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>FocusGrow — Cozy Clone</title>
+
+  <!-- Cute font -->
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="logo">🌸</div>
+        <div>
+          <h1 id="appName">DailyBloom</h1>
+          <div class="small">One small bloom at a time</div>
+        </div>
+      </div>
+
+      <div class="summary">
+        <div>
+          <div class="small">Points</div>
+          <div id="points" style="font-weight:700">0</div>
+        </div>
+        <div>
+          <div class="small">Streak (sum)</div>
+          <div id="streak" style="font-weight:700">0 🔥</div>
+        </div>
+      </div>
+
+      <div class="groups">
+        <h3>Your Routines</h3>
+        <div id="groupsList"></div>
+        <div style="margin-top:12px">
+          <button id="addGroupBtn" class="btn">+ New Routine</button>
+        </div>
+      </div>
+
+      <div style="margin-top:14px">
+        <h3 class="small">Themes</h3>
+        <select id="themeSelect" class="theme-select">
+          <option value="pink">🌸 Pink (default)</option>
+          <option value="mint">🌿 Mint</option>
+          <option value="lavender">💜 Lavender</option>
+        </select>
+      </div>
+
+      <div style="margin-top:14px">
+        <h3 class="small">Point Log</h3>
+        <ul id="pointsLog" class="points-log"></ul>
+      </div>
+
+      <div style="margin-top:14px">
+        <h3 class="small">Mood</h3>
+        <div class="group-item" id="openMood">
+          <div class="group-bullet" style="background:linear-gradient(90deg,#ff8a8a,#ffd2df)">🙂</div>
+          <div class="small">Log mood & notes</div>
+        </div>
+      </div>
+
+      <div style="margin-top:14px">
+        <h3 class="small">Pomodoro</h3>
+        <div class="pomodoro small">
+          <p id="timer">25:00</p>
+          <div style="display:flex;gap:6px;justify-content:center;margin-bottom:6px">
+            <button id="startTimer" class="btn small">Start</button>
+            <button id="resetTimer" class="btn small alt">Reset</button>
+          </div>
+          <p id="treeStatus" class="small">Tree is waiting... 🌱</p>
+        </div>
+      </div>
+
+    </aside>
+
+    <main class="main">
+      <div class="topbar">
+        <div>
+          <div style="font-size:1.1rem;font-weight:700">Today</div>
+          <div class="small">Don’t break your streak ✨</div>
+        </div>
+        <div class="stats">
+          <div class="stat small">Daily Target:
+            <input id="dailyTarget" type="number" min="1" value="3" style="width:56px;margin-left:6px;border-radius:6px;border:none;padding:4px">
+          </div>
+          <div class="stat small">Progress: <span id="dailyProgress">0</span></div>
+        </div>
+      </div>
+
+      <div class="controls">
+        <input id="taskText" type="text" placeholder="Add sub-task... (e.g. Meditate 10 min)" />
+        <select id="taskRoutine"></select>
+        <button id="addTask" class="btn">Add</button>
+      </div>
+
+      <div class="task-list" id="taskListContainer"></div>
+    </main>
+  </div>
+
+  <!-- Mood modal -->
+  <div id="moodModal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <h3>How are you feeling?</h3>
+      <div style="display:flex;gap:8px;margin:10px 0">
+        <button class="moodBtn" data-val="5">😁</button>
+        <button class="moodBtn" data-val="4">🙂</button>
+        <button class="moodBtn" data-val="3">😐</button>
+        <button class="moodBtn" data-val="2">😟</button>
+        <button class="moodBtn" data-val="1">😢</button>
+      </div>
+      <textarea id="moodNote" placeholder="Write a short note..."></textarea>
+      <div class="modal-actions">
+        <button id="saveMood" class="btn">Save</button>
+        <button id="closeMood" class="btn alt">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

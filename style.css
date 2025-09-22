@@ -1,0 +1,77 @@
+:root{
+  --bg1:#ffeef4; --bg2:#ffdfe9; --card: rgba(255,255,255,0.8);
+  --accent:#ff9eb5; --accent2:#ffc6d9; --muted:#8a5566;
+  --accent-contrast: #4b2e39;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:'Comic Neue', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background:linear-gradient(135deg,var(--bg1),var(--bg2)); color:var(--accent-contrast);}
+
+/* App layout */
+.app{max-width:1100px;margin:24px auto;padding:12px;display:grid;grid-template-columns:260px 1fr;gap:18px;align-items:start}
+
+/* Sidebar */
+.sidebar{background:var(--card);padding:16px;border-radius:18px;box-shadow:0 6px 24px rgba(76,28,49,0.06);height:calc(100vh - 48px);overflow:auto}
+.brand{display:flex;gap:12px;align-items:center;margin-bottom:14px}
+.logo{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:700;color:white;font-size:1.2rem}
+h1{font-size:1.05rem;margin:0}
+.small{font-size:0.82rem;color:var(--muted)}
+.summary{display:flex;justify-content:space-between;margin-top:12px;padding:10px;background:rgba(255,255,255,0.65);border-radius:10px}
+.groups{margin-top:18px}
+.groups h3{margin:8px 0 6px;padding:0;color:var(--muted);font-weight:700}
+.group-item{padding:10px;border-radius:10px;display:flex;align-items:center;gap:10px;cursor:pointer}
+.group-item:hover{background:linear-gradient(90deg, rgba(255,255,255,0.6), rgba(255,255,255,0.55))}
+.group-bullet{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.6)}
+
+/* Points log */
+.points-log{max-height:160px;overflow:auto;padding-left:16px;margin:8px 0;font-size:0.88rem}
+.points-log li{margin-bottom:6px;color:var(--muted)}
+
+/* Theme select */
+.theme-select{width:100%;padding:8px;border-radius:8px;border:none;margin-top:6px;background:rgba(255,255,255,0.9);color:var(--accent-contrast)}
+
+/* Main content */
+.main{background:var(--card);padding:18px;border-radius:18px;box-shadow:0 6px 24px rgba(76,28,49,0.06);height:calc(100vh - 48px);overflow:auto}
+.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.stats{display:flex;gap:12px;align-items:center}
+.stat{background:rgba(255,255,255,0.85);padding:8px 12px;border-radius:10px}
+.controls{display:flex;gap:10px;margin-top:12px;margin-bottom:14px}
+.controls input[type=text], .controls select{flex:1;padding:10px;border-radius:10px;border:1px solid rgba(76,28,49,0.06);background:white;color:var(--accent-contrast)}
+.controls button{padding:10px 12px;border-radius:10px;border:none;background:linear-gradient(90deg,var(--accent),var(--accent2));color:white;cursor:pointer}
+
+/* Task list */
+.task-list{margin-top:8px;display:flex;flex-direction:column;gap:12px}
+.routine{background:rgba(255,255,255,0.9);padding:12px;border-radius:12px}
+.routine h4{margin:0 0 8px 0;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.task{display:flex;align-items:center;gap:12px;padding:10px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.9));border:1px dashed rgba(255,158,181,0.35)}
+.task .meta{flex:1;display:flex;flex-direction:column}
+.task .meta .title{font-weight:700;color:var(--accent-contrast)}
+.task .meta .sub{font-size:0.85rem;color:var(--muted)}
+.task input[type=checkbox]{width:18px;height:18px;accent-color:var(--accent)} /* pastel checkbox */
+
+/* Pomodoro in sidebar styling (small) */
+.pomodoro{background:linear-gradient(90deg, rgba(255,255,255,0.92), rgba(255,255,255,0.9));padding:8px;border-radius:10px;text-align:center}
+#timer{font-size:1.3rem;margin:6px 0;font-weight:700}
+.pomodoro .btn{padding:6px 10px}
+
+/* Buttons */
+.btn{background:linear-gradient(90deg,var(--accent),var(--accent2));color:white;border:none;border-radius:8px;padding:8px 10px;cursor:pointer;font-weight:700}
+.btn.alt{background:linear-gradient(90deg,#f0f0f0,#e8e8e8);color:var(--accent-contrast);border:1px solid rgba(0,0,0,0.05)}
+.btn.small{padding:6px 8px;font-size:0.9rem}
+
+/* Modal */
+.modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.25);z-index:40}
+.modal.hidden{display:none}
+.modal-card{background:linear-gradient(180deg,#fff,#fff);padding:16px;border-radius:12px;width:320px;color:var(--accent-contrast)}
+.modal-card textarea{width:100%;height:80px;border-radius:8px;padding:8px;border:1px solid rgba(0,0,0,0.06);resize:none}
+
+/* Responsive */
+@media (max-width:900px){
+  .app{grid-template-columns:1fr; padding:12px}
+  .sidebar{order:2;height:auto}
+  .main{order:1;height:auto}
+}
+
+/* Theme variants (just adjust CSS vars when body attribute changes) */
+body[data-theme="pink"]{ --bg1:#ffeef4; --bg2:#ffdfe9; --accent:#ff9eb5; --accent2:#ffc6d9; --accent-contrast:#4b2e39; }
+body[data-theme="mint"]{ --bg1:#e6fff2; --bg2:#d3fff0; --accent:#6edd9a; --accent2:#bff0cf; --accent-contrast:#12402a; }
+body[data-theme="lavender"]{ --bg1:#f3e8ff; --bg2:#e7ddff; --accent:#b084f7; --accent2:#d1b6ff; --accent-contrast:#3c254d; }
